@@ -197,7 +197,7 @@
     .services .stitle,
     .portfolio .stitle,
     .about .stitle {
-      background: linear-gradient(130deg, #334155 0%, var(--acc) 100%);
+      background: linear-gradient(90deg, #4f8ef7 0%, #818cf8 100%);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
       display: block;
     }
@@ -485,17 +485,35 @@
     </div>
     <div class="svc-grid">
       <div class="svc-card rv d1">
-        <div class="svc-icon">📱</div>
+        <div class="svc-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="sg1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4f8ef7"/><stop offset="100%" stop-color="#818cf8"/></linearGradient></defs>
+            <rect x="5" y="2" width="14" height="20" rx="2" ry="2" stroke="url(#sg1)" stroke-width="2" fill="none"/>
+            <line x1="12" y1="18" x2="12" y2="18" stroke="url(#sg1)" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
         <div class="svc-name" data-k="v1n">Post & Story Dizayn</div>
         <p class="svc-desc" data-k="v1d">Feed postlari, Instagram va Telegram story'lari uchun brendga mos, izchil va jozibali vizual kontentlar yarataman.</p>
       </div>
       <div class="svc-card rv d2">
-        <div class="svc-icon">🎯</div>
-        <div class="svc-name" data-k="v2n">Reklama Kreatiflari</div>
+        <div class="svc-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="sg2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4f8ef7"/><stop offset="100%" stop-color="#818cf8"/></linearGradient></defs>
+            <circle cx="12" cy="12" r="10" stroke="url(#sg2)" stroke-width="2" fill="none"/>
+            <circle cx="12" cy="12" r="6" stroke="url(#sg2)" stroke-width="2" fill="none"/>
+            <circle cx="12" cy="12" r="2" fill="url(#sg2)"/>
+          </svg>
+        </div>
+        <div class="svc-name" data-k="v2n">Reklama Kreativlari</div>
         <p class="svc-desc" data-k="v2d">Targetli reklama uchun e'tiborni tortadigan va konversiyaga yo'naltirilgan kreativ dizaynlar — savdoni oshirish uchun.</p>
       </div>
       <div class="svc-card rv d3">
-        <div class="svc-icon">✦</div>
+        <div class="svc-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="sg3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4f8ef7"/><stop offset="100%" stop-color="#818cf8"/></linearGradient></defs>
+            <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6L12 2z" fill="url(#sg3)"/>
+          </svg>
+        </div>
         <div class="svc-name" data-k="v3n">Kontent Vizuali</div>
         <p class="svc-desc" data-k="v3d">Highlights qopqoqlari, shablonlar, rang palitralari va brend ohangini saqlagan holda barcha formatlardagi vizual kontent.</p>
       </div>
@@ -823,7 +841,7 @@ const T = {
     vtag:'Xizmatlar',vtitle:"SMM dizayn bo'yicha",
     vsub:"Har bir post, story va kreativ — brendingizning ijtimoiy tarmoqlardagi ovozi. Men shu ovozni professional va izchil qilaman.",
     v1n:'Post & Story Dizayn',v1d:"Feed postlari, Instagram va Telegram story'lari uchun brendga mos, izchil va jozibali vizual kontentlar yarataman.",
-    v2n:'Reklama Kreatiflari',v2d:"Targetli reklama uchun e'tiborni tortadigan va konversiyaga yo'naltirilgan kreativ dizaynlar — savdoni oshirish uchun.",
+    v2n:'Reklama Kreativlari',v2d:"Targetli reklama uchun e'tiborni tortadigan va konversiyaga yo'naltirilgan kreativ dizaynlar — savdoni oshirish uchun.",
     v3n:'Kontent Vizuali',v3d:"Highlights qopqoqlari, shablonlar va brend ohangini saqlagan holda barcha formatlardagi vizual kontent.",
     ptag:'Portfolio',ptitle:'Loyihalarim',psub:"Har bir loyihani bosing — barcha dizaynlarni ko'ring.",
     pext:'Telegram kanalda ›',pbtn:"Ko'rish →",
