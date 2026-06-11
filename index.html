@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jasurbek Aminjanov — SMM Dizayner</title>
+  <meta name="description" content="Jasurbek Aminjanov — SMM dizayn mutaxassisi. Brendingizning vizual sifatini professional bosqichga olib chiqaman.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --dark:   #090d1a;
+      --dark2:  #0f1524;
+      --dark3:  #1a2035;
+      --acc:    #4f8ef7;
+      --acc2:   #818cf8;
+      --white:  #ffffff;
+      --g50:    #f8fafc;
+      --g100:   #f1f5f9;
+      --g300:   #cbd5e1;
+      --g400:   #94a3b8;
+      --g600:   #475569;
+      --g900:   #0f172a;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--g900); overflow-x: hidden; cursor: none; }
+
+    /* ── CUSTOM CURSOR ── */
+    .cursor-dot {
+      position: fixed; width: 7px; height: 7px;
+      background: var(--acc); border-radius: 50%;
+      pointer-events: none; z-index: 999999;
+      transform: translate(-50%,-50%);
+      transition: transform .12s, opacity .2s;
+    }
+    .cursor-ring {
+      position: fixed; width: 30px; height: 30px;
+      border: 1.5px solid rgba(79,142,247,.65); border-radius: 50%;
+      pointer-events: none; z-index: 999998;
+      transform: translate(-50%,-50%);
+      transition: width .35s cubic-bezier(.23,1,.32,1), height .35s cubic-bezier(.23,1,.32,1),
+                  border-color .35s, background .35s;
+    }
+    .cursor-ring.hov   { width:52px; height:52px; border-color:var(--acc); background:rgba(79,142,247,.07); }
+    .cursor-ring.click { width:18px; height:18px; background:rgba(79,142,247,.2); }
+    .cursor-dot.hide,.cursor-ring.hide { opacity:0; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top:0; left:0; right:0; z-index:1000;
+      padding: 22px 6%; display:flex; justify-content:space-between; align-items:center;
+      transition: all .35s;
+    }
+    nav.sc { background:rgba(9,13,26,.95); backdrop-filter:blur(24px); padding:14px 6%; border-bottom:1px solid rgba(255,255,255,.06); }
+    .nav-logo { font-size:22px; font-weight:900; color:#fff; text-decoration:none; letter-spacing:-1px; }
+    .nav-logo span { color:var(--acc); }
+    .nav-links { display:flex; gap:36px; list-style:none; }
+    .nav-links a { color:rgba(255,255,255,.6); text-decoration:none; font-size:14px; font-weight:500; transition:color .3s; cursor:none; }
+    .nav-links a:hover { color:#fff; }
+    .nav-r { display:flex; align-items:center; gap:16px; }
+    .lw { display:flex; background:rgba(255,255,255,.08); border-radius:8px; overflow:hidden; }
+    .lb { padding:6px 14px; font-size:12px; font-weight:700; color:rgba(255,255,255,.45); border:none; background:none; cursor:none; font-family:inherit; transition:all .3s; }
+    .lb.on { background:var(--acc); color:#fff; }
+    .nav-cta { padding:10px 22px; background:var(--acc); color:#fff; border:none; border-radius:10px; font-size:14px; font-weight:600; cursor:none; text-decoration:none; transition:all .3s; font-family:inherit; }
+    .nav-cta:hover { background:#3b7de8; transform:translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh; background: var(--dark);
+      position: relative; overflow: hidden;
+      display: flex; align-items: stretch;
+      justify-content: flex-start;
+      padding-left: 4%;
+    }
+    .hglow {
+      position: absolute; inset: 0; pointer-events: none; z-index: 0;
+      background: radial-gradient(ellipse at 8% 60%, rgba(79,142,247,.16) 0%, transparent 45%),
+                  radial-gradient(ellipse at 4% 20%, rgba(129,140,248,.08) 0%, transparent 40%);
+      animation: glowShift 8s ease-in-out infinite alternate;
+    }
+    @keyframes glowShift { 0%{opacity:1} 100%{opacity:.7} }
+    .hgrid {
+      position: absolute; inset: 0; pointer-events: none; z-index: 0;
+      background-image: linear-gradient(rgba(255,255,255,.022) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,.022) 1px, transparent 1px);
+      background-size: 64px 64px;
+      animation: gridPan 30s linear infinite;
+    }
+    @keyframes gridPan { 0%{background-position:0 0} 100%{background-position:64px 64px} }
+
+    /* Hero LEFT — text side */
+    .hero-left {
+      flex: 0 0 44%;
+      position: relative; z-index: 3;
+      display: flex; align-items: center;
+      padding: 130px 2% 80px 14%;
+    }
+    .hero-text { position: relative; z-index: 3; width: 100%; }
+
+    .hbadge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 7px 16px; background: rgba(79,142,247,.1);
+      border: 1px solid rgba(79,142,247,.22); border-radius: 100px;
+      color: var(--acc); font-size: 13px; font-weight: 500; margin-bottom: 28px;
+      animation: badgeIn .8s cubic-bezier(.23,1,.32,1) both;
+    }
+    @keyframes badgeIn { from{opacity:0;transform:translateY(-14px)} to{opacity:1;transform:translateY(0)} }
+    .hbadge .dot { width:6px; height:6px; background:var(--acc); border-radius:50%; animation:blink 2s infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.35} }
+
+    .htitle {
+      font-size: clamp(38px, 4.8vw, 70px); font-weight: 900; color: #fff;
+      line-height: 1.06; letter-spacing: -2.5px; margin-bottom: 24px;
+      animation: titleIn 1s cubic-bezier(.23,1,.32,1) .15s both;
+    }
+    @keyframes titleIn { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+    .htitle .hl {
+      background: linear-gradient(90deg, var(--acc), var(--acc2), var(--acc));
+      background-size: 200%; -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+      animation: shimmer 4s linear infinite;
+    }
+    @keyframes shimmer { 0%{background-position:0%} 100%{background-position:200%} }
+
+    .hsub {
+      font-size: 16px; color: rgba(255,255,255,.5); line-height: 1.78;
+      max-width: 430px; margin-bottom: 40px;
+      animation: titleIn 1s cubic-bezier(.23,1,.32,1) .3s both;
+    }
+    .hbtns { display:flex; gap:14px; flex-wrap:wrap; animation:titleIn 1s cubic-bezier(.23,1,.32,1) .45s both; }
+
+    .bp { padding:15px 30px; background:var(--acc); color:#fff; border:none; border-radius:12px; font-size:15px; font-weight:600; cursor:none; text-decoration:none; display:inline-flex; align-items:center; gap:8px; transition:all .3s; font-family:inherit; }
+    .bp:hover { background:#3b7de8; transform:translateY(-2px); box-shadow:0 16px 40px rgba(79,142,247,.3); }
+    .bs { padding:15px 30px; background:transparent; color:#fff; border:1px solid rgba(255,255,255,.18); border-radius:12px; font-size:15px; font-weight:600; cursor:none; text-decoration:none; display:inline-flex; align-items:center; gap:8px; transition:all .3s; font-family:inherit; }
+    .bs:hover { border-color:rgba(255,255,255,.45); background:rgba(255,255,255,.04); }
+
+    /* Hero RIGHT — contained photo */
+    .hero-right {
+      flex: 0 0 38%;
+      position: relative;
+      animation: photoIn 1.2s cubic-bezier(.23,1,.32,1) .1s both;
+      overflow: visible;
+    }
+    @keyframes photoIn { from{opacity:0;transform:scale(1.03)} to{opacity:1;transform:scale(1)} }
+
+    .hero-right .hr-img {
+      position: absolute;
+      inset: 14% 0 0 0;
+      width: 100%; height: 86%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      z-index: 3;
+    }
+    /* Soft bottom blend */
+    .hr-fade-bottom {
+      position: absolute; bottom:0; left:0; right:0; height:120px; z-index:3;
+      background: linear-gradient(to top, var(--dark) 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    /* Floating info cards */
+    .fc {
+      position: absolute; z-index: 4;
+      background: rgba(9,13,26,.88); backdrop-filter:blur(20px);
+      border:1px solid rgba(255,255,255,.13); border-radius:16px;
+      padding:18px 24px; color:#fff;
+    }
+    .fc .fn { font-size:32px; font-weight:900; color:var(--acc); line-height:1; }
+    .fc .fl { font-size:13px; color:rgba(255,255,255,.48); margin-top:5px; }
+    /* fc1 — pastki chap, odam oldida */
+    .fc1 { bottom:56px; left:16px; z-index:4; animation:fcFloat 5s ease-in-out infinite; }
+    /* fc2 — odam orqasida, o'ng tomonda */
+    .fc2 { top:130px; right:-12px; z-index:2; animation:fcFloat 5s ease-in-out 2.5s infinite; }
+    @keyframes fcFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+
+    /* Particles */
+    .hparticle { position:absolute; border-radius:50%; pointer-events:none; z-index:1; background:var(--acc); animation:particleFloat linear infinite; }
+    @keyframes particleFloat { 0%{transform:translateY(0);opacity:.35} 50%{transform:translateY(-60px);opacity:.1} 100%{transform:translateY(-110px);opacity:0} }
+
+    /* ── STATS ── */
+    .stats { background:var(--dark2); padding:52px 6%; }
+    .stats-in { max-width:1360px; margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); gap:0; text-align:center; }
+    .st { border-right:1px solid rgba(255,255,255,.07); padding:0 20px; }
+    .st:last-child { border-right:none; }
+    .stn { font-size:50px; font-weight:900; color:#fff; letter-spacing:-2px; line-height:1; }
+    .stn span { color:var(--acc); }
+    .stl { font-size:14px; color:rgba(255,255,255,.38); margin-top:8px; font-weight:500; }
+
+    /* ── SECTION BASE ── */
+    .stag { display:inline-block; padding:5px 14px; background:rgba(79,142,247,.08); color:var(--acc); border-radius:100px; font-size:12px; font-weight:700; margin-bottom:18px; border:1px solid rgba(79,142,247,.16); text-transform:uppercase; letter-spacing:.5px; }
+    .stitle { font-size:clamp(28px,3.8vw,48px); font-weight:800; color:var(--g900); letter-spacing:-1.5px; line-height:1.1; margin-bottom:14px; }
+    .ssub { font-size:16px; color:var(--g400); max-width:520px; line-height:1.75; margin-bottom:56px; }
+
+    /* Gradient headings on light sections */
+    .services .stitle,
+    .portfolio .stitle,
+    .about .stitle {
+      background: linear-gradient(130deg, #334155 0%, var(--acc) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      display: block;
+    }
+
+    /* ── SERVICES ── */
+    .services {
+      padding:96px 6%; position:relative; overflow:hidden;
+      background-color: var(--white);
+      background-image: radial-gradient(rgba(79,142,247,.09) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+    .services::before {
+      content:''; position:absolute; top:-140px; left:-140px; pointer-events:none;
+      width:560px; height:560px; border-radius:50%;
+      background:radial-gradient(circle, rgba(79,142,247,.1) 0%, transparent 65%);
+      animation:lightOrb 14s ease-in-out infinite alternate;
+    }
+    .services::after {
+      content:''; position:absolute; bottom:-100px; right:-100px; pointer-events:none;
+      width:460px; height:460px; border-radius:50%;
+      background:radial-gradient(circle, rgba(129,140,248,.08) 0%, transparent 65%);
+      animation:lightOrb 14s ease-in-out 5s infinite alternate-reverse;
+    }
+    @keyframes lightOrb { 0%{transform:translate(0,0)} 100%{transform:translate(28px,18px)} }
+    .svc-in { max-width:1360px; margin:0 auto; position:relative; z-index:1; }
+    .svc-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+    .svc-card { padding:36px 30px; border:1px solid var(--g100); border-radius:20px; position:relative; overflow:hidden; transition:all .35s; }
+    .svc-card::after { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--acc),var(--acc2)); opacity:0; transition:opacity .35s; }
+    .svc-card:hover { border-color:var(--g300); transform:translateY(-5px); box-shadow:0 24px 64px rgba(0,0,0,.07); }
+    .svc-card:hover::after { opacity:1; }
+    .svc-icon { width:52px; height:52px; border-radius:13px; background:rgba(79,142,247,.08); display:flex; align-items:center; justify-content:center; margin-bottom:22px; font-size:22px; }
+    .svc-name { font-size:19px; font-weight:700; color:var(--g900); margin-bottom:10px; }
+    .svc-desc { font-size:14px; color:var(--g400); line-height:1.75; }
+
+    /* ── PORTFOLIO ── */
+    .portfolio {
+      padding:96px 6%; position:relative; overflow:hidden;
+      background-color: var(--g50);
+      background-image: radial-gradient(rgba(79,142,247,.08) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+    .portfolio::before {
+      content:''; position:absolute; top:-80px; right:5%; pointer-events:none;
+      width:440px; height:440px; border-radius:50%;
+      background:radial-gradient(circle, rgba(79,142,247,.08) 0%, transparent 65%);
+      animation:lightOrb 16s ease-in-out 2s infinite alternate;
+    }
+    .portfolio::after {
+      content:''; position:absolute; bottom:-80px; left:10%; pointer-events:none;
+      width:360px; height:360px; border-radius:50%;
+      background:radial-gradient(circle, rgba(129,140,248,.07) 0%, transparent 65%);
+      animation:lightOrb 16s ease-in-out 7s infinite alternate-reverse;
+    }
+    .port-in { max-width:1360px; margin:0 auto; position:relative; z-index:1; }
+    .port-head { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:48px; flex-wrap:wrap; gap:20px; }
+    .port-head .ssub { margin-bottom:0; }
+    .port-ext { display:inline-flex; align-items:center; gap:8px; padding:12px 24px; background:var(--dark); color:#fff; border-radius:10px; text-decoration:none; font-size:14px; font-weight:600; transition:all .3s; white-space:nowrap; cursor:none; }
+    .port-ext:hover { background:var(--acc); transform:translateY(-2px); }
+    .proj-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+    .proj-card { background:var(--dark); border-radius:28px; overflow:hidden; cursor:none; transition:all .35s; border:1px solid rgba(255,255,255,.06); display:flex; flex-direction:column; }
+    .proj-card:hover { transform:translateY(-6px); box-shadow:0 28px 70px rgba(0,0,0,.25); border-color:rgba(79,142,247,.25); }
+    .proj-thumb { width:100%; aspect-ratio:3/4; overflow:hidden; position:relative; background:var(--dark3); }
+    .proj-thumb img { width:100%; height:100%; object-fit:cover; transition:transform .5s; }
+    .proj-card:hover .proj-thumb img { transform:scale(1.06); }
+    .proj-thumb-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(9,13,26,.7) 0%,transparent 60%); }
+    .proj-info { padding:20px 22px 22px; display:flex; align-items:center; justify-content:space-between; }
+    .proj-logo-wrap { display:flex; align-items:center; gap:12px; flex:1; min-width:0; }
+    .proj-logo-img { height:28px; width:auto; max-width:100px; object-fit:contain; filter:brightness(0) invert(1); flex-shrink:0; }
+    .proj-logo-txt { font-size:13px; font-weight:800; color:#fff; letter-spacing:.5px; text-transform:uppercase; }
+    .proj-meta { text-align:right; flex-shrink:0; }
+    .proj-cat { font-size:10px; font-weight:700; color:var(--acc); text-transform:uppercase; letter-spacing:.5px; }
+    .proj-count { font-size:12px; color:rgba(255,255,255,.35); margin-top:2px; }
+    .proj-view-btn { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%) scale(0); background:rgba(255,255,255,.15); backdrop-filter:blur(12px); border:1.5px solid rgba(255,255,255,.35); color:#fff; padding:12px 28px; border-radius:50px; font-size:14px; font-weight:700; transition:all .3s; white-space:nowrap; pointer-events:none; letter-spacing:.3px; }
+    .proj-card:hover .proj-view-btn { transform:translate(-50%,-50%) scale(1); }
+
+    /* ── MODAL ── */
+    .modal-overlay { position:fixed; inset:0; z-index:9000; background:rgba(5,8,18,.97); backdrop-filter:blur(8px); display:none; flex-direction:column; overflow:hidden; }
+    .modal-overlay.open { display:flex; }
+    .modal-header { display:flex; align-items:center; justify-content:space-between; padding:20px 32px; border-bottom:1px solid rgba(255,255,255,.07); flex-shrink:0; background:rgba(9,13,26,.9); }
+    .modal-logo-wrap { display:flex; align-items:center; gap:16px; }
+    .modal-logo-img { height:32px; width:auto; max-width:140px; object-fit:contain; filter:brightness(0) invert(1); }
+    .modal-title-sub { font-size:12px; color:var(--g400); margin-top:2px; }
+    .modal-close { width:40px; height:40px; background:rgba(255,255,255,.07); border:none; border-radius:10px; color:rgba(255,255,255,.7); font-size:20px; cursor:none; display:flex; align-items:center; justify-content:center; transition:all .3s; font-family:inherit; }
+    .modal-close:hover { background:rgba(255,255,255,.12); color:#fff; }
+    .modal-body { flex:1; overflow-y:auto; padding:28px 32px; }
+    .modal-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:14px; }
+    .modal-img-wrap { border-radius:12px; overflow:hidden; cursor:none; background:var(--dark3); aspect-ratio:1/1; }
+    .modal-img-wrap img { width:100%; height:100%; object-fit:cover; transition:transform .4s; }
+    .modal-img-wrap:hover img { transform:scale(1.04); }
+
+    /* ── LIGHTBOX ── */
+    .lightbox { position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,.96); display:none; align-items:center; justify-content:center; }
+    .lightbox.open { display:flex; }
+    .lb-img { max-width:90vw; max-height:90vh; object-fit:contain; border-radius:8px; }
+    .lb-close { position:absolute; top:20px; right:20px; width:44px; height:44px; background:rgba(255,255,255,.1); border:none; border-radius:10px; color:#fff; font-size:22px; cursor:none; display:flex; align-items:center; justify-content:center; transition:background .3s; }
+    .lb-close:hover { background:rgba(255,255,255,.2); }
+    .lb-nav { position:absolute; top:50%; transform:translateY(-50%); width:48px; height:48px; background:rgba(255,255,255,.1); border:none; border-radius:50%; color:#fff; font-size:20px; cursor:none; display:flex; align-items:center; justify-content:center; transition:background .3s; }
+    .lb-nav:hover { background:rgba(79,142,247,.4); }
+    .lb-prev { left:20px; } .lb-next { right:20px; }
+
+    /* ── ABOUT ── */
+    .about {
+      padding:96px 6%; position:relative; overflow:hidden;
+      background-color: var(--white);
+      background-image: radial-gradient(rgba(79,142,247,.09) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+    .about::before {
+      content:''; position:absolute; top:50%; left:-120px; transform:translateY(-50%); pointer-events:none;
+      width:500px; height:500px; border-radius:50%;
+      background:radial-gradient(circle, rgba(79,142,247,.09) 0%, transparent 65%);
+      animation:lightOrb 13s ease-in-out 1s infinite alternate;
+    }
+    .about-in {
+      max-width: 1200px; margin: 0 auto; position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 40px 72px; align-items: start;
+    }
+    .about-left { text-align: left; }
+    .about-left .stag { margin-bottom: 18px; }
+    .about-left .ssub { margin-bottom: 0; color: var(--g400); font-size: 16px; line-height: 1.75; }
+    .about-right { text-align: left; }
+    .about-cta { grid-column: 1 / -1; text-align: center; padding-top: 8px; }
+    .alist { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+    .alist li { display: flex; align-items: center; gap: 12px; font-size: 15px; color: var(--g600); font-weight: 500; text-align: left; }
+    .alist li::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--acc); flex-shrink: 0; }
+
+    /* ── CONTACT ── */
+    .contact { padding:96px 6%; background:var(--dark); position:relative; overflow:hidden; }
+    .contact::before { content:''; position:absolute; top:-250px; left:50%; transform:translateX(-50%); width:700px; height:700px; background:radial-gradient(circle,rgba(79,142,247,.11) 0%,transparent 70%); pointer-events:none; }
+    .contact-in { max-width:1360px; margin:0 auto; position:relative; z-index:2; }
+    .con-grid { display:grid; grid-template-columns:1fr 1.1fr; gap:72px; align-items:start; }
+    .con-left .stitle { color:#fff; }
+    .con-left .ssub { color:rgba(255,255,255,.38); margin-bottom:40px; }
+    .clinks { display:flex; flex-direction:column; gap:12px; }
+    .clink { display:flex; align-items:center; gap:16px; padding:18px 22px; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:14px; text-decoration:none; color:#fff; transition:all .3s; cursor:none; }
+    .clink:hover { background:rgba(79,142,247,.1); border-color:rgba(79,142,247,.28); transform:translateX(4px); }
+    .clink-i { width:42px; height:42px; border-radius:10px; background:rgba(79,142,247,.14); display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0; }
+    .clink-t { font-size:14px; font-weight:600; }
+    .clink-v { font-size:12px; color:rgba(255,255,255,.38); margin-top:2px; }
+    .cform { background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.08); border-radius:24px; padding:38px; }
+    .cf-title { font-size:21px; font-weight:700; color:#fff; margin-bottom:30px; }
+    .fg { margin-bottom:18px; }
+    .fl-l { display:block; font-size:12px; font-weight:600; color:rgba(255,255,255,.45); margin-bottom:7px; text-transform:uppercase; letter-spacing:.5px; }
+    .fi { width:100%; padding:13px 16px; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.1); border-radius:10px; color:#fff; font-size:14px; font-family:inherit; outline:none; transition:border-color .3s; }
+    .fi:focus { border-color:var(--acc); }
+    .fi::placeholder { color:rgba(255,255,255,.2); }
+    textarea.fi { resize:none; height:110px; }
+    .fsub { width:100%; padding:15px; background:var(--acc); color:#fff; border:none; border-radius:10px; font-size:15px; font-weight:700; cursor:none; font-family:inherit; transition:all .3s; margin-top:6px; }
+    .fsub:hover { background:#3b7de8; transform:translateY(-1px); }
+
+    /* ── FOOTER ── */
+    footer { background:#060910; padding:36px 6%; border-top:1px solid rgba(255,255,255,.05); }
+    .foot-in { max-width:1360px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; }
+    .foot-logo { font-size:20px; font-weight:900; color:#fff; letter-spacing:-1px; }
+    .foot-logo span { color:var(--acc); }
+    .foot-copy { font-size:13px; color:rgba(255,255,255,.25); }
+    .foot-soc { display:flex; gap:10px; }
+    .soc-btn { width:36px; height:36px; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.08); border-radius:8px; display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,.45); text-decoration:none; font-size:15px; transition:all .3s; cursor:none; }
+    .soc-btn:hover { background:rgba(79,142,247,.15); color:var(--acc); border-color:rgba(79,142,247,.3); }
+
+    /* ── REVEAL ── */
+    .rv { opacity:0; transform:translateY(32px); transition:opacity .75s cubic-bezier(.23,1,.32,1), transform .75s cubic-bezier(.23,1,.32,1); }
+    .rv.vs { opacity:1; transform:translateY(0); }
+    .d1{transition-delay:.12s} .d2{transition-delay:.24s} .d3{transition-delay:.36s}
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:1024px) {
+      .hero { display:block; }
+      .hero-left { padding:130px 6% 80px; min-height:100vh; display:flex; align-items:center; }
+      .hero-right { display:none; }
+      .proj-grid { grid-template-columns:repeat(2,1fr); }
+    }
+    @media(max-width:768px) {
+      .nav-links { display:none; }
+      .stats-in { grid-template-columns:1fr; gap:24px; }
+      .st { border-right:none; border-bottom:1px solid rgba(255,255,255,.07); padding-bottom:24px; }
+      .st:last-child { border-bottom:none; }
+      .svc-grid { grid-template-columns:1fr; }
+      .proj-grid { grid-template-columns:1fr; }
+      .port-head { flex-direction:column; align-items:flex-start; }
+      .about-in { grid-template-columns: 1fr; }
+      .about-cta { grid-column: 1; }
+      .con-grid { grid-template-columns:1fr; gap:48px; }
+      .modal-grid { grid-template-columns:repeat(2,1fr); }
+      .foot-in { flex-direction:column; gap:18px; text-align:center; }
+    }
+    @media(max-width:480px) {
+      .modal-grid { grid-template-columns:1fr; }
+      .modal-body { padding:20px 16px; }
+      .modal-header { padding:16px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="cursor-dot"  id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- ── NAV ── -->
+<nav id="nav">
+  <a href="#" class="nav-logo">JA<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#services"  data-k="n_svc">Xizmatlar</a></li>
+    <li><a href="#portfolio" data-k="n_port">Portfolio</a></li>
+    <li><a href="#about"     data-k="n_about">Men haqimda</a></li>
+    <li><a href="#contact"   data-k="n_con">Aloqa</a></li>
+  </ul>
+  <div class="nav-r">
+    <div class="lw">
+      <button class="lb on" onclick="setLang('uz')">UZ</button>
+      <button class="lb"    onclick="setLang('ru')">RU</button>
+    </div>
+    <a href="#contact" class="nav-cta" data-k="n_cta">Bog'lanish</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero" id="home">
+  <div class="hglow"></div>
+  <div class="hgrid"></div>
+
+  <!-- LEFT: text content -->
+  <div class="hero-left">
+    <div class="hero-text">
+      <div class="hbadge"><span class="dot"></span><span data-k="badge">SMM Dizayner</span></div>
+      <h1 class="htitle">
+        <span data-k="ht1">Brendingiz</span><br>
+        <span class="hl" data-k="ht2">vizualini</span><br>
+        <span data-k="ht3">tartibga</span><br>
+        <span data-k="ht4">keltiraman</span>
+      </h1>
+      <p class="hsub" data-k="hsub">
+        Dizayni yetarli darajada bo'lmagan brendlarni SMM dizayn orqali professional va raqobatbardosh ko'rinishga keltirish — bu mening yo'nalishim.
+      </p>
+      <div class="hbtns">
+        <a href="#contact"   class="bp" data-k="hcta1">Hamkorlik qilish ›</a>
+        <a href="#portfolio" class="bs" data-k="hcta2">Ishlarimni ko'rish</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT: contained photo -->
+  <div class="hero-right">
+    <img class="hr-img" src="Rasm/Jasur Aminjanov.png" alt="Jasurbek Aminjanov">
+    <div class="hr-fade-bottom"></div>
+    <!-- Floating stat cards -->
+    <div class="fc fc1">
+      <div class="fn">2.5+</div>
+      <div class="fl" data-k="fc1">Yillik tajriba</div>
+    </div>
+    <div class="fc fc2">
+      <div class="fn">10+</div>
+      <div class="fl" data-k="fc2">Muvaffaqiyatli loyiha</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ── STATS ── -->
+<section class="stats">
+  <div class="stats-in">
+    <div class="st rv">
+      <div class="stn" data-count="2.5" data-float="1">2.5<span>+</span></div>
+      <div class="stl" data-k="s1">Yillik tajriba</div>
+    </div>
+    <div class="st rv d1">
+      <div class="stn" data-count="10">10<span>+</span></div>
+      <div class="stl" data-k="s2">Muvaffaqiyatli loyiha</div>
+    </div>
+    <div class="st rv d2">
+      <div class="stn" data-count="1000">1000<span>+</span></div>
+      <div class="stl" data-k="s3">Tayyorlangan dizayn</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES ── -->
+<section class="services" id="services">
+  <div class="svc-in">
+    <div class="rv">
+      <span class="stag" data-k="vtag">Xizmatlar</span>
+      <h2 class="stitle" data-k="vtitle">SMM dizayn bo'yicha</h2>
+      <p class="ssub" data-k="vsub">Har bir post, story va kreativ — brendingizning ijtimoiy tarmoqlardagi ovozi. Men shu ovozni professional va izchil qilaman.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card rv d1">
+        <div class="svc-icon">📱</div>
+        <div class="svc-name" data-k="v1n">Post & Story Dizayn</div>
+        <p class="svc-desc" data-k="v1d">Feed postlari, Instagram va Telegram story'lari uchun brendga mos, izchil va jozibali vizual kontentlar yarataman.</p>
+      </div>
+      <div class="svc-card rv d2">
+        <div class="svc-icon">🎯</div>
+        <div class="svc-name" data-k="v2n">Reklama Kreatiflari</div>
+        <p class="svc-desc" data-k="v2d">Targetli reklama uchun e'tiborni tortadigan va konversiyaga yo'naltirilgan kreativ dizaynlar — savdoni oshirish uchun.</p>
+      </div>
+      <div class="svc-card rv d3">
+        <div class="svc-icon">✦</div>
+        <div class="svc-name" data-k="v3n">Kontent Vizuali</div>
+        <p class="svc-desc" data-k="v3d">Highlights qopqoqlari, shablonlar, rang palitralari va brend ohangini saqlagan holda barcha formatlardagi vizual kontent.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PORTFOLIO ── -->
+<section class="portfolio" id="portfolio">
+  <div class="port-in">
+    <div class="port-head rv">
+      <div>
+        <span class="stag" data-k="ptag">Portfolio</span>
+        <h2 class="stitle" data-k="ptitle">Loyihalarim</h2>
+        <p class="ssub" data-k="psub">Har bir loyihani bosing — barcha dizaynlarni ko'ring.</p>
+      </div>
+      <a href="https://t.me/aminjanov_design" target="_blank" class="port-ext" data-k="pext">Telegram kanalda ›</a>
+    </div>
+    <div class="proj-grid rv">
+
+      <div class="proj-card" onclick="openProject('zarmed')">
+        <div class="proj-thumb">
+          <img src="Zarmed University/1.jpg" alt="Zarmed University" loading="lazy">
+          <div class="proj-thumb-overlay"></div>
+          <div class="proj-view-btn" data-k="pbtn">Ko'rish →</div>
+        </div>
+        <div class="proj-info">
+          <div class="proj-logo-wrap">
+            <img class="proj-logo-img" src="Zarmed University/logo.svg" alt="Zarmed University">
+          </div>
+          <div class="proj-meta">
+            <div class="proj-cat">SMD</div>
+            <div class="proj-count">25 dizayn</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card" onclick="openProject('najot')">
+        <div class="proj-thumb">
+          <img src="Najot Ta'lim/1.jpg" alt="Najot Ta'lim" loading="lazy">
+          <div class="proj-thumb-overlay"></div>
+          <div class="proj-view-btn" data-k="pbtn">Ko'rish →</div>
+        </div>
+        <div class="proj-info">
+          <div class="proj-logo-wrap">
+            <img class="proj-logo-img" src="Najot Ta'lim/logo.svg" alt="Najot Ta'lim">
+          </div>
+          <div class="proj-meta">
+            <div class="proj-cat">SMD</div>
+            <div class="proj-count">15 dizayn</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card" onclick="openProject('mutolaa')">
+        <div class="proj-thumb">
+          <img src="Mutolaa/Artboard 1.png" alt="Mutolaa" loading="lazy">
+          <div class="proj-thumb-overlay"></div>
+          <div class="proj-view-btn" data-k="pbtn">Ko'rish →</div>
+        </div>
+        <div class="proj-info">
+          <div class="proj-logo-wrap">
+            <img class="proj-logo-img" src="Mutolaa/logotip.png" alt="Mutolaa">
+          </div>
+          <div class="proj-meta">
+            <div class="proj-cat">SMD</div>
+            <div class="proj-count">8 dizayn</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card" onclick="openProject('enzo')">
+        <div class="proj-thumb">
+          <img src="ENZO/Artboard 1 copy 3.png" alt="ENZO" loading="lazy">
+          <div class="proj-thumb-overlay"></div>
+          <div class="proj-view-btn" data-k="pbtn">Ko'rish →</div>
+        </div>
+        <div class="proj-info">
+          <div class="proj-logo-wrap">
+            <img class="proj-logo-img" src="ENZO/logo.svg" alt="ENZO">
+          </div>
+          <div class="proj-meta">
+            <div class="proj-cat">SMD</div>
+            <div class="proj-count">14 dizayn</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card" onclick="openProject('goodzone')">
+        <div class="proj-thumb">
+          <img src="Goodzone Express/1.jpg" alt="Goodzone Express" loading="lazy">
+          <div class="proj-thumb-overlay"></div>
+          <div class="proj-view-btn" data-k="pbtn">Ko'rish →</div>
+        </div>
+        <div class="proj-info">
+          <div class="proj-logo-wrap">
+            <img class="proj-logo-img" src="Goodzone Express/logo.svg" alt="Goodzone Express">
+          </div>
+          <div class="proj-meta">
+            <div class="proj-cat">SMD</div>
+            <div class="proj-count">13 dizayn</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section class="about" id="about">
+  <div class="about-in">
+    <!-- Chap: tag, ism, tavsif -->
+    <div class="about-left rv">
+      <span class="stag" data-k="atag">Men haqimda</span>
+      <h2 class="stitle">Jasurbek Aminjanov</h2>
+      <p class="ssub" data-k="asub">
+        Men SMM dizayner bo'lib, asosiy yo'nalishim — brendlarning ijtimoiy tarmoqlardagi vizual sifatini yaxshilash. Vizual darajasi past bo'lgan loyihalarni dizayn orqali professional va raqobatbardosh ko'rinishga olib chiqish — mening kuchli tomonim.
+      </p>
+    </div>
+    <!-- O'ng: ro'yxat -->
+    <div class="about-right rv d1">
+      <ul class="alist">
+        <li data-k="al1">Instagram & Telegram uchun SMM dizayn</li>
+        <li data-k="al2">Reklama kreatiflari va promo materiallar</li>
+        <li data-k="al3">Kontent shablonlari va vizual tizim</li>
+        <li data-k="al4">Brendning ijtimoiy tarmoqlardagi ovozini shakllantirish</li>
+        <li data-k="al5">Natija hamda mijozlar mamnuniyatiga yo'naltirilgan yondashuv</li>
+      </ul>
+    </div>
+    <!-- Button — ikki ustun bo'ylab markazda -->
+    <div class="about-cta rv d2">
+      <a href="#contact" class="bp" data-k="acta">Loyiha muhokama qilish ›</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section class="contact" id="contact">
+  <div class="contact-in">
+    <div class="con-grid">
+      <div class="con-left rv">
+        <span class="stag" data-k="ctag">Aloqa</span>
+        <h2 class="stitle" data-k="ctitle">Loyihangizni boshlaylikmi?</h2>
+        <p class="ssub" data-k="csub">Yangi loyiha yoki hamkorlik uchun murojaat qiling. Tez orada javob beraman.</p>
+        <div class="clinks">
+          <a href="tel:+998910417365" class="clink">
+            <div class="clink-i">📞</div>
+            <div><div class="clink-t" data-k="cl1">Telefon</div><div class="clink-v">+998 91 041 73 65</div></div>
+          </a>
+          <a href="https://t.me/aminjanovdesign" target="_blank" class="clink">
+            <div class="clink-i">✈️</div>
+            <div><div class="clink-t">Telegram</div><div class="clink-v">@aminjanovdesign</div></div>
+          </a>
+          <a href="https://www.instagram.com/jvsurdizz/" target="_blank" class="clink">
+            <div class="clink-i">📸</div>
+            <div><div class="clink-t">Instagram</div><div class="clink-v">@jvsurdizz</div></div>
+          </a>
+          <a href="https://t.me/aminjanov_design" target="_blank" class="clink">
+            <div class="clink-i">🎨</div>
+            <div><div class="clink-t" data-k="cl2">Portfolio kanal</div><div class="clink-v">@aminjanov_design</div></div>
+          </a>
+        </div>
+      </div>
+      <div class="rv d1">
+        <div class="cform">
+          <div class="cf-title" data-k="cft">Xabar yuborish</div>
+          <form id="cForm">
+            <div class="fg">
+              <label class="fl-l" data-k="cf1">Ismingiz</label>
+              <input class="fi" type="text" placeholder="Ism Familiya" required>
+            </div>
+            <div class="fg">
+              <label class="fl-l" data-k="cf2">Telefon</label>
+              <input class="fi" type="tel" placeholder="+998 __ ___ __ __">
+            </div>
+            <div class="fg">
+              <label class="fl-l" data-k="cf3">Xabar</label>
+              <textarea class="fi" placeholder="Loyihangiz haqida qisqacha..."></textarea>
+            </div>
+            <button class="fsub" type="submit" data-k="cfsub">Yuborish →</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="foot-in">
+    <div class="foot-logo">JA<span>.</span></div>
+    <div class="foot-copy" data-k="fcopy">© 2024 Jasurbek Aminjanov. Barcha huquqlar himoyalangan.</div>
+    <div class="foot-soc">
+      <!-- Telegram -->
+      <a href="https://t.me/aminjanovdesign" target="_blank" class="soc-btn" title="Telegram">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.433z" fill="#2AABEE"/>
+        </svg>
+      </a>
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/jvsurdizz/" target="_blank" class="soc-btn" title="Instagram">
+        <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="ig1" cx="30%" cy="107%" r="150%">
+              <stop offset="0%"  stop-color="#fdf497"/>
+              <stop offset="45%" stop-color="#fd5949"/>
+              <stop offset="60%" stop-color="#d6249f"/>
+              <stop offset="90%" stop-color="#285AEB"/>
+            </radialGradient>
+          </defs>
+          <path fill="url(#ig1)" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+        </svg>
+      </a>
+      <!-- Telegram kanal -->
+      <a href="https://t.me/aminjanov_design" target="_blank" class="soc-btn" title="Portfolio kanal">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.433z" fill="#2AABEE"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<!-- ── MODAL ── -->
+<div class="modal-overlay" id="modal">
+  <div class="modal-header">
+    <div class="modal-logo-wrap">
+      <div id="mLogoWrap"></div>
+      <div>
+        <div id="mName" style="font-size:15px;font-weight:800;color:#fff;"></div>
+        <div id="mSub" class="modal-title-sub"></div>
+      </div>
+    </div>
+    <button class="modal-close" onclick="closeModal()">✕</button>
+  </div>
+  <div class="modal-body">
+    <div class="modal-grid" id="mGrid"></div>
+  </div>
+</div>
+
+<!-- ── LIGHTBOX ── -->
+<div class="lightbox" id="lb">
+  <button class="lb-close" onclick="closeLb()">✕</button>
+  <button class="lb-nav lb-prev" onclick="lbNav(-1)">‹</button>
+  <img class="lb-img" id="lbImg" src="" alt="">
+  <button class="lb-nav lb-next" onclick="lbNav(1)">›</button>
+</div>
+
+<script>
+/* ── CUSTOM CURSOR ── */
+const dot  = document.getElementById('cursorDot');
+const ring = document.getElementById('cursorRing');
+let mx=-200, my=-200, rx=-200, ry=-200;
+document.addEventListener('mousemove', e=>{ mx=e.clientX; my=e.clientY; dot.style.left=mx+'px'; dot.style.top=my+'px'; });
+(function loop(){ rx+=(mx-rx)*.13; ry+=(my-ry)*.13; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(loop); })();
+document.addEventListener('mousedown', ()=>{ ring.classList.add('click'); dot.style.transform='translate(-50%,-50%) scale(.6)'; });
+document.addEventListener('mouseup',   ()=>{ ring.classList.remove('click'); dot.style.transform='translate(-50%,-50%) scale(1)'; });
+document.addEventListener('mouseleave',()=>{ dot.classList.add('hide'); ring.classList.add('hide'); });
+document.addEventListener('mouseenter',()=>{ dot.classList.remove('hide'); ring.classList.remove('hide'); });
+document.querySelectorAll('a,button,.proj-card,.svc-card,.clink,.modal-img-wrap').forEach(el=>{
+  el.addEventListener('mouseenter',()=>ring.classList.add('hov'));
+  el.addEventListener('mouseleave',()=>ring.classList.remove('hov'));
+});
+
+/* ── PARTICLES (left side only) ── */
+const heroLeft = document.querySelector('.hero-left');
+for(let i=0;i<14;i++){
+  const p=document.createElement('div'); p.className='hparticle';
+  const sz=1.5+Math.random()*2;
+  p.style.cssText=`left:${Math.random()*100}%;top:${50+Math.random()*50}%;width:${sz}px;height:${sz}px;opacity:${.1+Math.random()*.18};animation-delay:${Math.random()*10}s;animation-duration:${9+Math.random()*7}s;position:absolute;`;
+  heroLeft.appendChild(p);
+}
+
+/* ── PROJECT DATA ── */
+const PROJECTS = {
+  zarmed:   { name:'Zarmed University',  logo:'Zarmed University/logo.svg',    images:Array.from({length:25},(_,i)=>`Zarmed University/${i+1}.jpg`) },
+  najot:    { name:"Najot Ta'lim",       logo:"Najot Ta'lim/logo.svg",         images:Array.from({length:15},(_,i)=>`Najot Ta'lim/${i+1}.jpg`) },
+  mutolaa:  { name:'Mutolaa',            logo:'Mutolaa/logotip.png',           images:['Mutolaa/Artboard 1.png','Mutolaa/Artboard 2.png','Mutolaa/chegirma.png','Mutolaa/davra.png','Mutolaa/iqtibos.png','Mutolaa/kubog.png','Mutolaa/tanlovv.png','Mutolaa/Temurbek Adhamov.png'] },
+  enzo:     { name:'ENZO',               logo:'ENZO/logo.svg',                 images:['ENZO/Artboard 1 copy 3.png','ENZO/Artboard 1 copy 4.png','ENZO/Artboard 1 copy 6.png','ENZO/Artboard 1 copy 10.png','ENZO/11111.png','ENZO/123.png','ENZO/41.png','ENZO/4414.png','ENZO/444.png','ENZO/123131313.jpg','ENZO/31313.jpg','ENZO/414141.jpg','ENZO/555555.jpg','ENZO/55555555.jpg'] },
+  goodzone: { name:'Goodzone Express',   logo:'Goodzone Express/logo.svg',     images:['Goodzone Express/1.jpg','Goodzone Express/2.jpg','Goodzone Express/3.jpg','Goodzone Express/4.jpg','Goodzone Express/5.jpg','Goodzone Express/6.jpg','Goodzone Express/7.jpg','Goodzone Express/Artboard 1 copy 6-1.png','Goodzone Express/Artboard 1 copy 6.png','Goodzone Express/Artboard 1 copy 7.png','Goodzone Express/Artboard 1 copy 8.png','Goodzone Express/Artboard 1 copy 9.png','Goodzone Express/photo_2026-06-03_00-08-03.jpg'] }
+};
+
+let lbImages=[], lbIdx=0;
+function openProject(id){
+  const p=PROJECTS[id];
+  document.getElementById('mName').textContent=p.name;
+  document.getElementById('mSub').textContent=`${p.images.length} ta dizayn`;
+  document.getElementById('mLogoWrap').innerHTML=p.logo?`<img class="modal-logo-img" src="${p.logo}" alt="${p.name}">`:'' ;
+  lbImages=p.images;
+  document.getElementById('mGrid').innerHTML=p.images.map((s,i)=>`<div class="modal-img-wrap" onclick="openLb(${i})"><img src="${s}" alt="dizayn ${i+1}" loading="lazy"></div>`).join('');
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){ document.getElementById('modal').classList.remove('open'); document.body.style.overflow=''; }
+function openLb(i){ lbIdx=i; document.getElementById('lbImg').src=lbImages[i]; document.getElementById('lb').classList.add('open'); }
+function closeLb(){ document.getElementById('lb').classList.remove('open'); }
+function lbNav(d){ lbIdx=(lbIdx+d+lbImages.length)%lbImages.length; document.getElementById('lbImg').src=lbImages[lbIdx]; }
+document.getElementById('modal').addEventListener('click',function(e){ if(e.target===this) closeModal(); });
+document.getElementById('lb').addEventListener('click',function(e){ if(e.target===this) closeLb(); });
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'){closeModal();closeLb();} if(e.key==='ArrowLeft')lbNav(-1); if(e.key==='ArrowRight')lbNav(1); });
+
+/* ── TRANSLATIONS ── */
+const T = {
+  uz:{
+    n_svc:'Xizmatlar',n_port:'Portfolio',n_about:'Men haqimda',n_con:'Aloqa',n_cta:"Bog'lanish",
+    badge:'SMM Dizayner',
+    ht1:'Brendingiz',ht2:'vizualini',ht3:'tartibga',ht4:'keltiraman',
+    hsub:"Dizayni yetarli darajada bo'lmagan brendlarni SMM dizayn orqali professional va raqobatbardosh ko'rinishga keltirish — bu mening yo'nalishim.",
+    hcta1:'Hamkorlik qilish ›',hcta2:"Ishlarimni ko'rish",
+    fc1:'Yillik tajriba',fc2:'Muvaffaqiyatli loyiha',
+    s1:'Yillik tajriba',s2:'Muvaffaqiyatli loyiha',s3:'Tayyorlangan dizayn',
+    vtag:'Xizmatlar',vtitle:"SMM dizayn bo'yicha",
+    vsub:"Har bir post, story va kreativ — brendingizning ijtimoiy tarmoqlardagi ovozi. Men shu ovozni professional va izchil qilaman.",
+    v1n:'Post & Story Dizayn',v1d:"Feed postlari, Instagram va Telegram story'lari uchun brendga mos, izchil va jozibali vizual kontentlar yarataman.",
+    v2n:'Reklama Kreatiflari',v2d:"Targetli reklama uchun e'tiborni tortadigan va konversiyaga yo'naltirilgan kreativ dizaynlar — savdoni oshirish uchun.",
+    v3n:'Kontent Vizuali',v3d:"Highlights qopqoqlari, shablonlar va brend ohangini saqlagan holda barcha formatlardagi vizual kontent.",
+    ptag:'Portfolio',ptitle:'Loyihalarim',psub:"Har bir loyihani bosing — barcha dizaynlarni ko'ring.",
+    pext:'Telegram kanalda ›',pbtn:"Ko'rish →",
+    atag:'Men haqimda',
+    asub:"Men SMM dizayner bo'lib, asosiy yo'nalishim — brendlarning ijtimoiy tarmoqlardagi vizual sifatini yaxshilash. Vizual darajasi past bo'lgan loyihalarni dizayn orqali professional va raqobatbardosh ko'rinishga olib chiqish — mening kuchli tomonim.",
+    al1:'Instagram & Telegram uchun SMM dizayn',al2:'Reklama kreatiflari va promo materiallar',
+    al3:'Kontent shablonlari va vizual tizim',al4:"Brendning ijtimoiy tarmoqlardagi ovozini shakllantirish",
+    al5:"Natija hamda mijozlar mamnuniyatiga yo'naltirilgan yondashuv",
+    acta:'Loyiha muhokama qilish ›',ab_b:'Yillik tajriba',
+    ctag:'Aloqa',ctitle:'Loyihangizni boshlaylikmi?',csub:"Yangi loyiha yoki hamkorlik uchun murojaat qiling. Tez orada javob beraman.",
+    cl1:'Telefon',cl2:'Portfolio kanal',
+    cft:'Xabar yuborish',cf1:'Ismingiz',cf2:'Telefon',cf3:'Xabar',cfsub:'Yuborish →',
+    fcopy:'© 2024 Jasurbek Aminjanov. Barcha huquqlar himoyalangan.'
+  },
+  ru:{
+    n_svc:'Услуги',n_port:'Портфолио',n_about:'Обо мне',n_con:'Контакт',n_cta:'Написать',
+    badge:'SMM Дизайнер',
+    ht1:'Визуал',ht2:'вашего бренда',ht3:'под полным',ht4:'контролем',
+    hsub:'Бренды с недостаточным визуальным уровнем — моя специализация. SMM дизайн как инструмент роста и конкурентного преимущества.',
+    hcta1:'Сотрудничать ›',hcta2:'Посмотреть работы',
+    fc1:'Лет опыта',fc2:'Успешных проектов',
+    s1:'Лет опыта',s2:'Успешных проектов',s3:'Созданных дизайнов',
+    vtag:'Услуги',vtitle:'SMM дизайн',
+    vsub:'Каждый пост, сторис и креатив — голос вашего бренда в соцсетях. Делаю этот голос профессиональным и последовательным.',
+    v1n:'Посты & Stories',v1d:'Визуальный контент для ленты, Instagram и Telegram stories — в едином фирменном стиле бренда.',
+    v2n:'Рекламные Креативы',v2d:'Привлекающие внимание и конверсионные креативы для таргетированной рекламы — для роста продаж.',
+    v3n:'Контент Визуал',v3d:'Обложки для Highlights, шаблоны и визуальная система, сохраняющая tone of voice бренда.',
+    ptag:'Портфолио',ptitle:'Мои проекты',psub:'Нажмите на проект — посмотрите все дизайны.',
+    pext:'В Telegram канале ›',pbtn:'Смотреть →',
+    atag:'Обо мне',
+    asub:'Я SMM дизайнер, специализирующийся на улучшении визуального качества брендов в социальных сетях.',
+    al1:'SMM дизайн для Instagram и Telegram',al2:'Рекламные креативы и промо-материалы',
+    al3:'Контент-шаблоны и визуальная система',al4:'Формирование голоса бренда в соцсетях',
+    al5:'Результат-ориентированный подход и удовлетворённость клиента',
+    acta:'Обсудить проект ›',ab_b:'Лет опыта',
+    ctag:'Контакт',ctitle:'Начнём ваш проект?',csub:'Напишите по поводу нового проекта или сотрудничества. Отвечу быстро.',
+    cl1:'Телефон',cl2:'Канал-портфолио',
+    cft:'Написать сообщение',cf1:'Ваше имя',cf2:'Телефон',cf3:'Сообщение',cfsub:'Отправить →',
+    fcopy:'© 2024 Джасурбек Аминжанов. Все права защищены.'
+  }
+};
+function setLang(lang){
+  document.querySelectorAll('.lb').forEach(b=>b.classList.toggle('on',b.textContent===lang.toUpperCase()));
+  document.querySelectorAll('[data-k]').forEach(el=>{ const v=T[lang][el.getAttribute('data-k')]; if(v!==undefined) el.textContent=v; });
+  document.documentElement.lang=lang;
+}
+
+/* ── NAV SCROLL ── */
+window.addEventListener('scroll',()=>{ document.getElementById('nav').classList.toggle('sc',window.scrollY>40); });
+
+/* ── SCROLL REVEAL ── */
+const obs=new IntersectionObserver(entries=>{ entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('vs'); }); },{threshold:.1});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+/* ── STATS COUNTER ── */
+function animCount(el,target,isFloat){
+  const dur=1600,start=performance.now();
+  (function step(ts){ const p=Math.min((ts-start)/dur,1),ease=1-Math.pow(1-p,3),val=isFloat?(target*ease).toFixed(1):Math.round(target*ease); el.childNodes[0].textContent=val; if(p<1) requestAnimationFrame(step); })(start);
+}
+const cObs=new IntersectionObserver(entries=>{ entries.forEach(e=>{ if(e.isIntersecting){ animCount(e.target,parseFloat(e.target.dataset.count),!!e.target.dataset.float); cObs.unobserve(e.target); } }); },{threshold:.5});
+document.querySelectorAll('.stn[data-count]').forEach(el=>cObs.observe(el));
+
+/* ── CONTACT FORM ── */
+document.getElementById('cForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  const name=this.querySelector('input[type=text]').value, tel=this.querySelector('input[type=tel]').value, msg=this.querySelector('textarea').value;
+  window.open(`https://t.me/aminjanovdesign?text=${encodeURIComponent(`Salom!\nIsm: ${name}\nTel: ${tel}\nXabar: ${msg}`)}`,'_blank');
+});
+</script>
+</body>
+</html>

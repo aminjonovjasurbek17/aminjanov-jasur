@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Yayra — Tabiat shishada. Sof energiya.</title>
+<meta name="description" content="Yayra — 100% tabiiy, qo'shilgan shakarsiz smuzilar. Shirin ta'm, sof energiya, hech qanday arzon dofamin emas." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500;1,600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ===== FRUIT SVG SPRITE ===== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="fr-orange" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="#F58634"/><circle cx="50" cy="50" r="36" fill="#FFC78A"/><g stroke="#F58634" stroke-width="3"><path d="M50 14v72M14 50h72M24 24l52 52M76 24 24 76"/></g><circle cx="50" cy="50" r="46" fill="none" stroke="#E2701F" stroke-width="4"/></symbol>
+  <symbol id="fr-melon" viewBox="0 0 100 60"><path d="M2 4h96c0 28-21 52-48 52S2 32 2 4Z" fill="#E23B4E"/><path d="M8 6h84c0 24-18 44-42 44S8 30 8 6Z" fill="#F47C84"/><circle cx="40" cy="24" r="2.4" fill="#1B1B18"/><circle cx="54" cy="30" r="2.4" fill="#1B1B18"/><circle cx="48" cy="40" r="2.4" fill="#1B1B18"/><path d="M2 4h96l-2-3H4Z" fill="#5A7D18"/></symbol>
+  <symbol id="fr-leaf" viewBox="0 0 80 80"><path d="M72 8C40 8 12 30 10 64c0 4 1 8 2 12 34 0 60-26 60-60 0-3-1-5 0-8Z" fill="#7FA322"/><path d="M14 70C30 50 48 30 68 16" stroke="#fff" stroke-opacity=".5" stroke-width="3" stroke-linecap="round"/></symbol>
+  <symbol id="fr-kiwi" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="#6E4B1E"/><circle cx="50" cy="50" r="40" fill="#8FB327"/><circle cx="50" cy="50" r="10" fill="#EAF4C8"/><g fill="#1B1B18"><circle cx="50" cy="26" r="2"/><circle cx="50" cy="74" r="2"/><circle cx="26" cy="50" r="2"/><circle cx="74" cy="50" r="2"/><circle cx="33" cy="33" r="2"/><circle cx="67" cy="33" r="2"/><circle cx="33" cy="67" r="2"/><circle cx="67" cy="67" r="2"/></g></symbol>
+  <symbol id="fr-seeds" viewBox="0 0 60 40"><g fill="#B11E3A"><ellipse cx="12" cy="14" rx="5" ry="7" transform="rotate(-20 12 14)"/><ellipse cx="30" cy="22" rx="5" ry="7" transform="rotate(10 30 22)"/><ellipse cx="46" cy="12" rx="5" ry="7" transform="rotate(-8 46 12)"/></g></symbol>
+</svg>
+
+<!-- ===== NAV ===== -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="#hero" class="nav__logo">Yayra<span>.</span></a>
+    <nav class="nav__links">
+      <a href="#flavors">Ta'mlar</a>
+      <a href="#benefits">Foyda</a>
+      <a href="#story">Falsafa</a>
+      <a href="#ritual">Lahza</a>
+    </nav>
+    <a href="#flavors" class="btn btn--pill nav__cta">Buyurtma <span class="btn__arrow">→</span></a>
+    <button class="nav__burger" id="navBurger" aria-label="Menyu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <!-- Mobil menyu -->
+  <div class="nav__mobile" id="navMobile">
+    <a href="#flavors">Ta'mlar</a>
+    <a href="#benefits">Foyda</a>
+    <a href="#story">Falsafa</a>
+    <a href="#ritual">Lahza</a>
+    <a href="#reviews">Fikrlar</a>
+    <a href="#faq">Savol-javob</a>
+    <a href="#flavors" class="btn btn--pill">Buyurtma <span class="btn__arrow">→</span></a>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="hero">
+  <div class="hero__media">
+    <img src="assets/products/hero.png" alt="Yayra smuzilar to'plami basseyn suvida" class="hero__media-img" />
+    <a href="#flavors" class="hero__scroll" aria-label="Pastga">↓</a>
+  </div>
+
+  <div class="hero__content">
+    <div class="hero__deco" aria-hidden="true">
+      <!-- apelsin bo'lagi -->
+      <svg class="deco deco--1" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="#F58634"/><circle cx="50" cy="50" r="36" fill="#FFC78A"/><g stroke="#F58634" stroke-width="3"><path d="M50 14v72M14 50h72M24 24l52 52M76 24 24 76"/></g><circle cx="50" cy="50" r="46" fill="none" stroke="#E2701F" stroke-width="4"/></svg>
+      <!-- tarvuz bo'lagi -->
+      <svg class="deco deco--2" viewBox="0 0 100 60"><path d="M2 4h96a0 0 0 0 1 0 0c0 28-21 52-48 52S2 32 2 4Z" fill="#E23B4E"/><path d="M8 6h84c0 24-18 44-42 44S8 30 8 6Z" fill="#F47C84"/><circle cx="40" cy="24" r="2.4" fill="#1B1B18"/><circle cx="54" cy="30" r="2.4" fill="#1B1B18"/><circle cx="48" cy="40" r="2.4" fill="#1B1B18"/><path d="M2 4h96l-2-3H4Z" fill="#5A7D18"/></svg>
+      <!-- yashil barg -->
+      <svg class="deco deco--3" viewBox="0 0 80 80"><path d="M72 8C40 8 12 30 10 64c0 4 1 8 2 12 34 0 60-26 60-60 0-3-1-5 0-8Z" fill="#7FA322"/><path d="M14 70C30 50 48 30 68 16" stroke="#fff" stroke-opacity=".5" stroke-width="3" stroke-linecap="round"/></svg>
+      <!-- kivi bo'lagi -->
+      <svg class="deco deco--4" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="#6E4B1E"/><circle cx="50" cy="50" r="40" fill="#8FB327"/><circle cx="50" cy="50" r="10" fill="#EAF4C8"/><g fill="#1B1B18"><circle cx="50" cy="26" r="2"/><circle cx="50" cy="74" r="2"/><circle cx="26" cy="50" r="2"/><circle cx="74" cy="50" r="2"/><circle cx="33" cy="33" r="2"/><circle cx="67" cy="33" r="2"/><circle cx="33" cy="67" r="2"/><circle cx="67" cy="67" r="2"/></g></svg>
+      <!-- urug'lar -->
+      <svg class="deco deco--5" viewBox="0 0 60 40"><g fill="#B11E3A"><ellipse cx="12" cy="14" rx="5" ry="7" transform="rotate(-20 12 14)"/><ellipse cx="30" cy="22" rx="5" ry="7" transform="rotate(10 30 22)"/><ellipse cx="46" cy="12" rx="5" ry="7" transform="rotate(-8 46 12)"/></g></svg>
+    </div>
+
+    <h1 class="hero__title">
+      <span class="line">Tabiiy ichimlik</span>
+      <span class="line line--nowrap">Yayraydigan ta'm</span>
+    </h1>
+    <p class="hero__lead">
+      Zararli, shakarga botgan ichimliklarga endi yo'q deng. Yayra — bu arzon dofamin emas,
+      bu meva va sabzavotlarning haqiqiy quvvati. Shirin, lekin ishonchli.
+    </p>
+    <div class="hero__cta">
+      <a href="#flavors" class="btn btn--solid">Ta'mni tanlang <span class="btn__arrow">→</span></a>
+      <a href="#benefits" class="btn btn--ghost">Nega Yayra?</a>
+    </div>
+    <ul class="hero__stats">
+      <li><strong>5</strong><span>tabiiy ta'm</span></li>
+      <li><strong>0g</strong><span>qo'shilgan shakar</span></li>
+      <li><strong>100%</strong><span>meva &amp; sabzavot</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== LIFESTYLE COLLAGE MARQUEE ===== -->
+<div class="collage" aria-hidden="true">
+  <div class="collage__track">
+    <figure class="collage__frame"><img src="assets/lifestyle/apelsin.png" alt="" /></figure>
+    <figure class="collage__frame"><img src="assets/lifestyle/tarvuz.png" alt="" /></figure>
+    <figure class="collage__frame"><img src="assets/lifestyle/detox.png" alt="" /></figure>
+    <figure class="collage__frame"><img src="assets/lifestyle/anor.png" alt="" /></figure>
+    <figure class="collage__frame"><img src="assets/lifestyle/sabzi.png" alt="" /></figure>
+    <!-- nusxa (uzluksiz aylanish uchun) -->
+    <figure class="collage__frame"><img src="assets/lifestyle/apelsin.png" alt="" /></figure>
+    <figure class="collage__frame"><img src="assets/lifestyle/tarvuz.png" alt="" /></figure>
+    <figure class="collage__frame"><img src="assets/lifestyle/detox.png" alt="" /></figure>
+    <figure class="collage__frame"><img src="assets/lifestyle/anor.png" alt="" /></figure>
+    <figure class="collage__frame"><img src="assets/lifestyle/sabzi.png" alt="" /></figure>
+  </div>
+</div>
+
+<!-- ===== FLAVORS ===== -->
+<section class="flavors" id="flavors">
+  <svg viewBox="0 0 80 80" class="sec-fruit sec-fruit--spin" style="width:74px; height:74px; top:70px; left:18%;" aria-hidden="true"><use href="#fr-leaf"/></svg>
+  <svg viewBox="0 0 60 40" class="sec-fruit" style="width:64px; height:43px; top:84px; right:19%;" aria-hidden="true"><use href="#fr-seeds"/></svg>
+  <div class="section-head">
+    <span class="section-head__tag">Ta'mlar</span>
+    <h2 class="section-head__title">Beshta kayfiyat,<br>beshta rang</h2>
+    <p class="section-head__sub">Har bir shisha — alohida bir lahza. Eng yoqqanini tanlang yoki barchasini sinab ko'ring.</p>
+  </div>
+
+  <div class="flavor-grid">
+    <article class="flavor-card" style="--c1:#FF7E79; --c2:#FFD2CC; --ink:#C23B45;">
+      <div class="flavor-card__glow"></div>
+      <img src="assets/products/tarvuz.png" alt="Yayra Tarvuz smuzi" class="flavor-card__img" />
+      <div class="flavor-card__body">
+        <span class="flavor-card__badge">Yozgi salqinlik</span>
+        <h3>Tarvuz</h3>
+        <p>Yozning bir qultumi. Suvga to'la, yengil va muzdek tetiklantiruvchi — issiq kunlarning najoti.</p>
+        <div class="flavor-card__foot">
+          <span class="price">19 000 so'm</span>
+          <button class="btn btn--mini">Savatga</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="flavor-card" style="--c1:#B11E3A; --c2:#E9879A; --ink:#7E0E22;">
+      <div class="flavor-card__glow"></div>
+      <img src="assets/products/anor.png" alt="Yayra Anor smuzi" class="flavor-card__img" />
+      <div class="flavor-card__body">
+        <span class="flavor-card__badge">Antioksidant kuchi</span>
+        <h3>Anor</h3>
+        <p>Quyuq, jasur va to'q. Antioksidantlarga boy anor yuragingiz va terangiz uchun jonli bir ehson.</p>
+        <div class="flavor-card__foot">
+          <span class="price">21 000 so'm</span>
+          <button class="btn btn--mini">Savatga</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="flavor-card" style="--c1:#F58634; --c2:#FFC78A; --ink:#C75E12;">
+      <div class="flavor-card__glow"></div>
+      <img src="assets/products/sabzi.png" alt="Yayra Sabzi smuzi" class="flavor-card__img" />
+      <div class="flavor-card__body">
+        <span class="flavor-card__badge">Ko'rish &amp; teri</span>
+        <h3>Sabzi</h3>
+        <p>Beta-karotinga boy, mayin va to'yimli. Ichdan nur taratuvchi tabiiy go'zallik eliksiri.</p>
+        <div class="flavor-card__foot">
+          <span class="price">18 000 so'm</span>
+          <button class="btn btn--mini">Savatga</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="flavor-card" style="--c1:#FFB400; --c2:#FFE08A; --ink:#C98A00;">
+      <div class="flavor-card__glow"></div>
+      <img src="assets/products/apelsin.png" alt="Yayra Apelsin smuzi" class="flavor-card__img" />
+      <div class="flavor-card__body">
+        <span class="flavor-card__badge">C vitamin portlashi</span>
+        <h3>Apelsin</h3>
+        <p>Quyoshni bir qultumda. C vitaminiga to'la, ertangi quvvat va kayfiyatingizning kaliti.</p>
+        <div class="flavor-card__foot">
+          <span class="price">18 000 so'm</span>
+          <button class="btn btn--mini">Savatga</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="flavor-card" style="--c1:#A9C627; --c2:#DCEBA8; --ink:#5A7D18;">
+      <div class="flavor-card__glow"></div>
+      <img src="assets/products/detox.png" alt="Yayra Detox smuzi" class="flavor-card__img" />
+      <div class="flavor-card__body">
+        <span class="flavor-card__badge">Tozalanish &amp; muvozanat</span>
+        <h3>Detox</h3>
+        <p>Bodring, kivi, yalpiz va limetta. Tanani yengillashtiruvchi, ichingizdan tiniqlik beruvchi yashil reset.</p>
+        <div class="flavor-card__foot">
+          <span class="price">22 000 so'm</span>
+          <button class="btn btn--mini">Savatga</button>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ===== BENEFITS (BENTO) ===== -->
+<section class="benefits" id="benefits">
+  <svg viewBox="0 0 100 100" class="sec-fruit sec-fruit--spin" style="width:78px; height:78px; top:24px; right:26%;" aria-hidden="true"><use href="#fr-orange"/></svg>
+  <svg viewBox="0 0 100 60" class="sec-fruit" style="width:70px; height:42px; top:150px; right:9%;" aria-hidden="true"><use href="#fr-melon"/></svg>
+  <div class="section-head section-head--left">
+    <span class="section-head__tag">Nega Yayra?</span>
+    <h2 class="section-head__title">Shirinlikni<br>sog'liqdan ayirmaymiz</h2>
+  </div>
+
+  <div class="benefit-row">
+    <div class="benefit-card" style="--accent:#E23B4E;">
+      <span class="benefit-card__icon">
+        <svg viewBox="0 0 48 48" fill="none"><path d="M6 18a18 18 0 0 0 36 0Z" fill="currentColor"/><path d="M6 18a18 18 0 0 0 36 0" stroke="#2E7D32" stroke-width="3" fill="none"/><circle cx="18" cy="24" r="1.6" fill="#1B1B18"/><circle cx="26" cy="27" r="1.6" fill="#1B1B18"/><circle cx="32" cy="22" r="1.6" fill="#1B1B18"/></svg>
+      </span>
+      <div class="benefit-card__num">01</div>
+      <h3>Qo'shimcha shakar yo'q</h3>
+      <p>Yagona shirinlik manbai — mevaning o'zi. Na oq shakar, na sun'iy shirinlatgich qo'shilgan.
+         Ta'mi tabiiy, qoningizdagi shakar esa tinch.</p>
+    </div>
+
+    <div class="benefit-card" style="--accent:#F58634;">
+      <span class="benefit-card__icon">
+        <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="26" r="16" fill="currentColor"/><circle cx="24" cy="26" r="9" fill="#fff" fill-opacity=".35"/><path d="M24 9c2-3 6-4 8-3-1 3-4 5-8 4Z" fill="#5A7D18"/></svg>
+      </span>
+      <div class="benefit-card__num">02</div>
+      <h3>Sof energiya</h3>
+      <p>Kofeinli tushkunlik emas — mevalarning tabiiy quvvati. Kun bo'yi barqaror tetiklik beradi.</p>
+    </div>
+
+    <div class="benefit-card" style="--accent:#B11E3A;">
+      <span class="benefit-card__icon">
+        <svg viewBox="0 0 48 48" fill="none"><path d="M24 12c8 0 14 6 14 15s-6 13-14 13-14-4-14-13 6-15 14-15Z" fill="currentColor"/><path d="M24 12c0-3-1-5-3-7 4 0 7 2 7 5 0 1-1 2-4 2Z" fill="#5A7D18"/><circle cx="20" cy="28" r="1.5" fill="#fff" fill-opacity=".6"/><circle cx="27" cy="31" r="1.5" fill="#fff" fill-opacity=".6"/><circle cx="24" cy="24" r="1.5" fill="#fff" fill-opacity=".6"/></svg>
+      </span>
+      <div class="benefit-card__num">03</div>
+      <h3>Antioksidantlarga boy</h3>
+      <p>Anor, tarvuz va sabzi — hujayralaringizni himoya qiluvchi tabiiy qalqon.</p>
+    </div>
+
+    <div class="benefit-card" style="--accent:#5A7D18;">
+      <span class="benefit-card__icon">
+        <svg viewBox="0 0 48 48" fill="none"><path d="M38 10C22 10 12 20 12 34c0 2 .4 4 1 6 14 2 27-9 27-24 0-2-.6-4-2-6Z" fill="currentColor"/><path d="M13 39C20 30 28 22 37 16" stroke="#fff" stroke-opacity=".55" stroke-width="2.4" stroke-linecap="round"/></svg>
+      </span>
+      <div class="benefit-card__num">04</div>
+      <h3>Konservantsiz</h3>
+      <p>Toza tarkib, yashirin qo'shimchalarsiz. Yorliqdagi har bir so'zni o'qiy olasiz va tushunasiz.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STORY / PHILOSOPHY ===== -->
+<section class="story" id="story">
+  <svg viewBox="0 0 100 60" class="sec-fruit" style="width:84px; height:50px; top:16%; left:15%;" aria-hidden="true"><use href="#fr-melon"/></svg>
+  <svg viewBox="0 0 100 100" class="sec-fruit sec-fruit--spin" style="width:80px; height:80px; top:16%; right:15%;" aria-hidden="true"><use href="#fr-kiwi"/></svg>
+  <div class="story__inner">
+    <span class="section-head__tag">Falsafa</span>
+    <h2 class="story__title">
+      Arzon dofamin emas<br>
+      <span class="accent">Tabiiy quvonch</span>
+    </h2>
+    <p class="story__text">
+      Bozordagi ko'p ichimliklar bir lahzalik lazzat berib, ortidan charchoq va shakar tushkunligini
+      qoldiradi. Biz boshqa yo'lni tanladik. Yayra — sizni aldamaydi: har bir qultum mevaning o'zidan,
+      tabiatning ritmida. Shirinlikni yaxshi ko'rasizmi? Biz ham. Faqat to'g'ri yo'l bilan.
+    </p>
+    <div class="story__pillars">
+      <div class="pillar"><span>Ishonchli</span><small>tarkib oxirigacha ochiq</small></div>
+      <div class="pillar"><span>Yengil</span><small>tanaga yuk emas, quvvat</small></div>
+      <div class="pillar"><span>Jonli</span><small>tabiatning haqiqiy ta'mi</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RITUAL / LIFESTYLE ===== -->
+<section class="ritual" id="ritual">
+  <svg viewBox="0 0 100 100" class="sec-fruit sec-fruit--spin" style="width:74px; height:74px; top:70px; left:18%;" aria-hidden="true"><use href="#fr-kiwi"/></svg>
+  <svg viewBox="0 0 80 80" class="sec-fruit" style="width:68px; height:68px; top:80px; right:18%;" aria-hidden="true"><use href="#fr-leaf"/></svg>
+  <div class="section-head">
+    <span class="section-head__tag">Lahza</span>
+    <h2 class="section-head__title">Kuningizning<br>eng yorqin qultumi</h2>
+    <p class="section-head__sub">Ertalabki quyoshda, mashg'ulotdan keyin yoki shunchaki o'zingiz uchun — Yayra har lahzaga yarashadi.</p>
+  </div>
+
+  <div class="ritual__gallery">
+    <figure class="ritual__item ritual__item--tall">
+      <img src="assets/lifestyle/apelsin.png" alt="Apelsin smuzi ichayotgan ayol" />
+      <figcaption><span>Ertalabki energiya</span>Apelsin bilan uyg'oning</figcaption>
+    </figure>
+    <figure class="ritual__item">
+      <img src="assets/lifestyle/tarvuz.png" alt="Tarvuz smuzi ichayotgan ayol" />
+      <figcaption><span>Yozgi salqin</span>Tarvuz bilan tetiklaning</figcaption>
+    </figure>
+    <figure class="ritual__item">
+      <img src="assets/lifestyle/anor.png" alt="Anor smuzi ichayotgan ayol" />
+      <figcaption><span>Mayin oqshom</span>Anor bilan dam oling</figcaption>
+    </figure>
+    <figure class="ritual__item ritual__item--tall">
+      <img src="assets/lifestyle/detox.png" alt="Detox smuzi ichayotgan ayol" />
+      <figcaption><span>Toza boshlanish</span>Detox bilan yangilaning</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="reviews" id="reviews">
+  <svg viewBox="0 0 100 100" class="sec-fruit sec-fruit--spin" style="width:76px; height:76px; top:66px; left:18%;" aria-hidden="true"><use href="#fr-orange"/></svg>
+  <svg viewBox="0 0 60 40" class="sec-fruit" style="width:64px; height:43px; top:84px; right:18%;" aria-hidden="true"><use href="#fr-seeds"/></svg>
+  <div class="section-head">
+    <span class="section-head__tag">Fikrlar</span>
+    <h2 class="section-head__title">Yayrani<br>sevganlar</h2>
+    <p class="section-head__sub">Minglab mijozlar shakarli ichimliklarni Yayraga almashtirdi. Mana ularning ba'zilari.</p>
+  </div>
+
+  <div class="review-row">
+    <article class="review-card">
+      <div class="review-card__stars">★★★★★</div>
+      <p>"Har kuni ertalab Apelsin ichaman — kofega bo'lgan ehtiyojim yo'qoldi. Ta'mi haqiqiy, sun'iy emas."</p>
+      <div class="review-card__author"><span class="review-card__ava" style="--a:#F58634;">M</span><div><strong>Madina Yusupova</strong><small>Doimiy mijoz</small></div></div>
+    </article>
+
+    <article class="review-card">
+      <div class="review-card__stars">★★★★★</div>
+      <p>"Detox aqlga sig'maydigan darajada toza. Mashg'ulotdan keyin o'zimni yengil his qilaman, og'irlik yo'q."</p>
+      <div class="review-card__author"><span class="review-card__ava" style="--a:#5A7D18;">S</span><div><strong>Sardor Aliyev</strong><small>Fitnes ishqibozi</small></div></div>
+    </article>
+
+    <article class="review-card">
+      <div class="review-card__stars">★★★★★</div>
+      <p>"Bolalarimga shakarsiz nimadir topish qiyin edi. Tarvuz ularning sevimlisiga aylandi — men esa xotirjamman."</p>
+      <div class="review-card__author"><span class="review-card__ava" style="--a:#E23B4E;">N</span><div><strong>Nigora Karimova</strong><small>Ona</small></div></div>
+    </article>
+
+    <article class="review-card">
+      <div class="review-card__stars">★★★★★</div>
+      <p>"Anorning to'qligi va ta'mi zo'r. Tarkibida nima borligini bilaman — bu men uchun eng muhimi."</p>
+      <div class="review-card__author"><span class="review-card__ava" style="--a:#B11E3A;">J</span><div><strong>Jasur Rahimov</strong><small>Nutritsiolog</small></div></div>
+    </article>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="faq" id="faq">
+  <svg viewBox="0 0 100 60" class="sec-fruit" style="width:72px; height:43px; top:66px; right:19%;" aria-hidden="true"><use href="#fr-melon"/></svg>
+  <svg viewBox="0 0 80 80" class="sec-fruit sec-fruit--spin" style="width:68px; height:68px; top:80px; left:19%;" aria-hidden="true"><use href="#fr-leaf"/></svg>
+  <div class="section-head">
+    <span class="section-head__tag">Savol-javob</span>
+    <h2 class="section-head__title">Tez-tez<br>so'raladi</h2>
+  </div>
+
+  <div class="faq__list">
+    <details class="faq__item">
+      <summary>Yayrada haqiqatan ham shakar qo'shilmaganmi?</summary>
+      <p>Ha. Yagona shirinlik manbai — mevaning o'z tabiiy shakari. Biz na oq shakar, na sun'iy shirinlatgich qo'shamiz. Shuning uchun ta'mi shirin, lekin sog'liqqa zarari yo'q.</p>
+    </details>
+    <details class="faq__item">
+      <summary>Tarkibida konservant yoki bo'yoq bormi?</summary>
+      <p>Yo'q. Yayra faqat meva va sabzavotlardan tayyorlanadi. Hech qanday konservant, sun'iy bo'yoq yoki kimyoviy qo'shimcha ishlatilmaydi.</p>
+    </details>
+    <details class="faq__item">
+      <summary>Mahsulot qancha muddat saqlanadi?</summary>
+      <p>Tabiiy tarkib tufayli Yayra sovutgichda saqlanadi va ochilgandan so'ng 2-3 kun ichida iste'mol qilinishi tavsiya etiladi. Har bir shishada aniq sana ko'rsatilgan.</p>
+    </details>
+    <details class="faq__item">
+      <summary>Qaysi ta'mdan boshlaganim ma'qul?</summary>
+      <p>Agar yangi bo'lsangiz, Apelsin yoki Tarvuz — yengil va hammaga yoqadigan boshlanish. Tozalanish istasangiz Detox, energiya uchun esa Anor zo'r tanlov.</p>
+    </details>
+    <details class="faq__item">
+      <summary>Yetkazib berasizmi?</summary>
+      <p>Ha, Toshkent bo'ylab yetkazib beramiz. Buyurtma uchun pastdagi aloqa raqamiga yoki ijtimoiy tarmoqlarimizga yozing — tez orada onlayn do'kon ham ishga tushadi.</p>
+    </details>
+  </div>
+</section>
+
+<!-- ===== CTA BANNER ===== -->
+<section class="cta-banner">
+  <div class="cta-banner__glow"></div>
+  <h2>Birinchi qultumga<br>tayyormisiz?</h2>
+  <p>Tabiatning eng shirin tomonini bugun tatib ko'ring.</p>
+  <a href="#flavors" class="btn btn--solid btn--lg">Yayrani buyurtma qiling <span class="btn__arrow">→</span></a>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer" id="contact">
+  <div class="footer__top">
+    <div class="footer__brand">
+      <a href="#hero" class="nav__logo nav__logo--lg">Yayra<span>.</span></a>
+      <p>Tabiat shishada. Sof energiya, ishonchli shirinlik.</p>
+      <div class="footer__socials">
+        <a href="#" aria-label="Instagram" class="social">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="6"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="#" aria-label="Telegram" class="social">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3 18.6 20c-.2 1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-4.9 8.9-8c.4-.3-.1-.5-.6-.2L6.3 13.3l-4.7-1.5c-1-.3-1-1 .2-1.5L20.6 3c.9-.3 1.6.2 1.3 1.3z"/></svg>
+        </a>
+        <a href="#" aria-label="TikTok" class="social">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 3c.3 2 1.5 3.5 3.5 3.8v2.6c-1.3.1-2.6-.3-3.7-1v5.7c0 3.6-2.6 6.1-6 5.8-2.8-.2-5-2.6-4.9-5.4.1-2.9 2.6-5.1 5.5-4.8v2.7c-.4-.1-.9-.2-1.4-.1-1.2.2-2 1.2-1.9 2.4.1 1.2 1.2 2.1 2.4 1.9 1.1-.1 1.9-1.1 1.9-2.3V3h4.1z"/></svg>
+        </a>
+        <a href="#" aria-label="YouTube" class="social">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7c-.2-.9-.9-1.5-1.7-1.7C19.3 5.2 12 5.2 12 5.2s-7.3 0-8.9.4c-.8.2-1.5.8-1.7 1.7C1 8.8 1 12 1 12s0 3.2.4 4.7c.2.9.9 1.5 1.7 1.7 1.6.4 8.9.4 8.9.4s7.3 0 8.9-.4c.8-.2 1.5-.8 1.7-1.7.4-1.5.4-4.7.4-4.7zM9.8 15.3V8.7l5.7 3.3-5.7 3.3z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer__cols">
+      <div class="footer__col">
+        <h4>Ta'mlar</h4>
+        <a href="#flavors">Tarvuz</a>
+        <a href="#flavors">Anor</a>
+        <a href="#flavors">Sabzi</a>
+        <a href="#flavors">Apelsin</a>
+        <a href="#flavors">Detox</a>
+      </div>
+      <div class="footer__col">
+        <h4>Kompaniya</h4>
+        <a href="#story">Falsafamiz</a>
+        <a href="#benefits">Foydalari</a>
+        <a href="#ritual">Lahzalar</a>
+        <a href="#">Hamkorlik</a>
+      </div>
+      <div class="footer__col">
+        <h4>Aloqa</h4>
+        <a href="tel:+998901234567">+998 90 123 45 67</a>
+        <a href="mailto:salom@yayra.uz">salom@yayra.uz</a>
+        <a href="#">Toshkent, O'zbekiston</a>
+      </div>
+    </div>
+
+    <div class="footer__visual">
+      <img src="assets/products/lineup.png" alt="Yayra smuzilar qatori" />
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <span>© 2026 Yayra. Barcha huquqlar himoyalangan.</span>
+    <span class="footer__made">Tabiat bilan ♥ tayyorlangan</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
